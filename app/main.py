@@ -2,8 +2,11 @@ import hashlib
 import hmac
 import logging
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 from fastapi import FastAPI, Request, HTTPException
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from app import db, worker, mock_client
@@ -32,6 +35,21 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="LinkPlease webhook automation", lifespan=lifespan)
+
+# Mount static files
+static_path = Path(__file__).parent / "static"
+static_path.mkdir(exist_ok=True)
+app.mount("/static", StaticFiles(directory=str(static_path)), name="static")
+
+
+# ---------- Root / Dashboard ----------
+
+@app.get("/", response_class=HTMLResponse)
+async def root():
+    index_path = static_path / "index.html"
+    if index_path.exists():
+        return HTMLResponse(content=index_path.read_text(), status_code=200)
+    return HTMLResponse(content="<h1>LinkPlease API is running</h1>", status_code=200)
 
 
 # ---------- POST /webhook ----------
