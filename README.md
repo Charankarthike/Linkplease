@@ -44,6 +44,16 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions.
 
 See `FAILURES.md` for what's *not* handled.
 
+## Part C — Advanced Features ⭐
+
+This implementation includes **Part C bonus features**:
+- ✅ **Reconcile delivery status** - Background loop polls for late failures
+- ✅ **Handle comment.deleted events** - Cancels pending DMs sensibly
+- ✅ **500 events/10s burst** - Nothing lost, rate limit never breached
+- ✅ **Exponential backoff retries** - Transient failures automatically retry
+
+See [PART_C_COMPLIANCE.md](PART_C_COMPLIANCE.md) for detailed implementation and testing guide.
+
 ## Setup
 
 ```bash
