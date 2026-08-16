@@ -4,6 +4,12 @@ Part A + Part B of the assignment: rule-based auto-DM on `PRICE`-style
 comment keywords, on top of the PseudoGram mock Instagram API, with
 webhook signature verification and live `/stats`.
 
+## 🚀 Quick Deploy
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/Charankarthike/Linkplease)
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions.
+
 ## How it's built
 
 - **FastAPI** app with exactly the three contract endpoints
