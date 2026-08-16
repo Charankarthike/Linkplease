@@ -3,7 +3,8 @@ services:
     name: linkplease-webhook
     env: python
     plan: free
-    buildCommand: pip install -r requirements.txt
+    runtime: python
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
     startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: PSEUDOGRAM_API_KEY
